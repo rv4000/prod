@@ -211,4 +211,90 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 
 >>>>
+33 :- 
+
+0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ls -ltrh
+total 32
+-rw-r--r--   1 b0268336-01  staff    40B Feb  9 10:10 index.html
+drwxr-xr-x  36 b0268336-01  staff   1.1K Feb 11 19:27 tensorflow
+-rw-r--r--   1 b0268336-01  staff   7.3K Feb 11 19:52 gita.txt
+-rw-r--r--   1 b0268336-01  staff    13B Feb 11 19:54 error.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % touch error1.log error2.log 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % touch error4.log error3.log 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ls -ltrh
+total 32
+-rw-r--r--   1 b0268336-01  staff    40B Feb  9 10:10 index.html
+drwxr-xr-x  36 b0268336-01  staff   1.1K Feb 11 19:27 tensorflow
+-rw-r--r--   1 b0268336-01  staff   7.3K Feb 11 19:52 gita.txt
+-rw-r--r--   1 b0268336-01  staff    13B Feb 11 19:54 error.log
+-rw-r--r--   1 b0268336-01  staff     0B Feb 11 19:56 error1.log
+-rw-r--r--   1 b0268336-01  staff     0B Feb 11 19:56 error2.log
+-rw-r--r--   1 b0268336-01  staff     0B Feb 11 19:56 error4.log
+-rw-r--r--   1 b0268336-01  staff     0B Feb 11 19:56 error3.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	error1.log
+	error2.log
+	error3.log
+	error4.log
+
+nothing added to commit but untracked files present (use "git add" to track)
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim .gitignore 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status    
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error1.log              
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error2.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error3.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status    
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+
+
                    
