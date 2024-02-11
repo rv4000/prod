@@ -406,5 +406,68 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA %
 
 
 
+b0268336-01@B0268336-01s-MacBook-Pro dir % git status  
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	./
+
+nothing added to commit but untracked files present (use "git add" to track)
+b0268336-01@B0268336-01s-MacBook-Pro dir % cd ..
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	dir/
+
+nothing added to commit but untracked files present (use "git add" to track)
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % echo "dir/" >> .gitignore
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % cat .gitignore 
+*.log
+dir/
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim gita.txt 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git add -Z
+error: unknown switch `Z'
+usage: git add [<options>] [--] <pathspec>...
+
+    -n, --dry-run         dry run
+    -v, --verbose         be verbose
+
+    -i, --interactive     interactive picking
+    -p, --patch           select hunks interactively
+    -e, --edit            edit current diff and apply
+    -f, --force           allow adding otherwise ignored files
+    -u, --update          update tracked files
+    --renormalize         renormalize EOL of tracked files (implies -u)
+    -N, --intent-to-add   record only the fact that the path will be added later
+    -A, --all             add changes from all tracked and untracked files
+    --ignore-removal      ignore paths removed in the working tree (same as --no-all)
+    --refresh             don't add, only refresh the index
+    --ignore-errors       just skip files which cannot be added because of errors
+    --ignore-missing      check if - even missing - files are ignored in dry run
+    --chmod (+|-)x        override the executable bit of the listed files
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git add -A
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   .gitignore
+	modified:   gita.txt
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "exclude ignore to place untrack"
+[master 07fe9cd] exclude ignore to place untrack
+ 2 files changed, 49 insertions(+), 1 deletion(-)
+
+
+
 
 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                   
