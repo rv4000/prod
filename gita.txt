@@ -470,4 +470,4 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "exclude ignore to
 
 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>                   
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  To Check diff of current and old version commit  (GIT DIFF CURRENT WORKING DIRECTORY TO STAGGING DIR)               
