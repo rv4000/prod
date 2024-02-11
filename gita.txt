@@ -189,7 +189,7 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA %
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim .gitignore
-b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % *.log
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
@@ -297,4 +297,67 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA %
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 
 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status    
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error1.log              
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error2.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim error3.log
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status    
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   .gitignore
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim gita.txt                  
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "add ignorefile all logs"
+On branch master
+Changes not staged for commit:
+	modified:   .gitignore
+	modified:   gita.txt
+
+no changes added to commit
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git add -A                       
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status                             
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   .gitignore
+	modified:   gita.txt
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "add ignorefile all logs"
+[master 6ece795] add ignorefile all logs
+ 2 files changed, 87 insertions(+), 1 deletion(-)
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
                    
