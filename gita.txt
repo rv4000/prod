@@ -470,4 +470,67 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "exclude ignore to
 
 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  To Check diff of current and old version commit  (GIT DIFF CURRENT WORKING DIRECTORY TO STAGGING DIR)               
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  To Check diff of current and old version commit  (GIT DIFF CURRENT WORKING DIRECTORY TO STAGGING DIR)              
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status        
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	data1.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status          
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   data1.txt
+	modified:   gita.txt
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim data1.txt 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status   
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   data1.txt
+	modified:   gita.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   data1.txt
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git diff     
+diff --git a/data1.txt b/data1.txt
+index 0bc41de..1b1c3a8 100644
+--- a/data1.txt
++++ b/data1.txt
+@@ -1 +1 @@
+-This is change on PWD
++This is change on PWD. Post move on staged stage
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+
+>>>>>> 
