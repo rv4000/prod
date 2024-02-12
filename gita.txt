@@ -541,4 +541,6 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git remote -v
 origin	git@github.com:rv4000/prod.git (fetch)
 origin	git@github.com:rv4000/prod.git (push)
 
- 
+>>>>>>>>>> GIT STATUS MAKE ALIAS >>>>>>>>>>
+
+git config --global alias.st status 

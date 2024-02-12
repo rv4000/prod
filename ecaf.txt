@@ -1,0 +1,1627 @@
+ECAF :-
+
+
+grafana:-http://10.5.100.87:3000/dashboard/db/digital-aadhar-ecaf-dashboard?refresh=15m&orgId=1
+username:-encasa_ops
+passwd:-change@#321
+
+digital-aadhar-ecaf-dashboard
+
+
+Outstation Customer.:-
+
+ECAF details :-->
+
+
+select * from TXN_MASTER where caf_number is not null and status is null and CREATED_DATE>=trunc(sysdate-20);
+
+
+Cropped Images:-
+
+pwd /opt/cropped-images/outbox
+
+
+Remote televerification :-
+
+search CAF Numbers on 
+
+Cropped Images:-
+
+pwd /opt/cropped-images/outbox
+
+>>> dedube repushed:-http://10.5.244.102:7005/orion-prepaid/nonaadhaar/dedupe/repush?caf=E047877718
+>>> rtv_repushed :-remote teleleverification 
+
+
+
+
+
+Postive case repushed :-
+
+curl -X POST http://10.5.244.102:7005/orion-prepaid/nonaadhaar/rtv/trigger -H 'content-type: application/json' -d  \
+ '{"cafNumber":"E084721799","msisdn":"9958293983","status":"POSITIVE","comments":"POSITIVE-A"}'
+
+
+status not having details:-
+
+ for i in `cat caf.txt`;do curl -v "http://10.5.244.102:7005/orion-prepaid/nonaadhaar/rtv/repush?caf=$i"; done
+
+
+Mitra:-RE: JK agent data|| MITRA
+
+select b.user_identifier as LAPU_NO,b.AADHAAR_NAME as AGENT_NAME,a.user_identifier as PARENT_ID,a.AADHAAR_NAME as PARENT_NAME,d.CIRCLE_CODE_NOTIFICATION from retailer_Agent_aadhaar_info a,RETAILER_AGENT_AADHAAR_INFO b,user_credentials c,circle_mapping d where a.user_identifier=c.user_identifier and c.circle_id=d.circle_id  and d.circle_id='55' and  a.id=b.parent_id and a.id=b.parent_id and b.status=1 ;
+
+>>>>>>>>>>>>>>>COCP SIMSWAP >>>>>>>>>>>>>>>>>>>>>>>>>>>..
+
+This is COCP number so can’t repush from  ECAF application hence getting valid business error.PSB
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
+hub wise query
+
+
+select count(1),a.circle_name,b.status from circle_master a,txn_master b where a.nds_circle_code=b.nds_circle_code and b.status='dedupe_add_success' and trunc(b.created_date)=trunc(sysdate) group by  
+a.circle_name,b.status;
+
+
+
+
+Non_ADHAAR_OTP :--
+
+ECAF DB
+
+select * from TXN_MASTER where msisdn='6232403823';
+
+Field:-Non_aadhaar_actiation_code
+
+
+to update app_version:-
+
+update app_version_master set app_version='202,206' where OS_VERSION='android';
+select * from app_version_master;
+
+
+
+
+-=================== prepaid PDF pending when PDF genration done==========================
+
+
+curl -v http://10.5.244.102:7004/orion-prepaid/test/pdf?caf=I091948710
+
+
+
+
+
+
+
+Reporting servers:-
+
+IP:-10.5.251.130
+username:-ecaf_user
+paswd:-Welcome$777
+
+
+IP:-10.5.214.143
+
+username:-eca_user
+
+ssh 10.5.215.41
+
+B0091062
+Airtel@123
+
+Weblogic$786
+
+[B0091062@N2MCITL-CAF002 reports]$ crontab -l
+############################################################## ORION REPORT #############################################################
+
+05 02 * * * source ~/.bash_profile; sh /application/scripts/orion_report_new.sh > /application/logs/orion_report.log 2>&1 &
+00 */1 * * * source ~/.bash_profile; sh /application/scripts/pacs_failed_report.sh > /application/logs/pacs_failed.log 2>&1 &
+05 10-23 * * * source ~/.bash_profile; sh /application/scripts/orion_tat.sh > /application/logs/orion_tat.log 2>&1 &
+30 10,14,16,18,23 * * * source ~/.bash_profile; sh /application/scripts/ecaf_orion_report.sh > /application/logs/orion_ecaf_rpt.log 2>&1 &
+00 06-23 * * * source ~/.bash_profile; sh /application/scripts/ecaf_orion_report_new.sh > /application/logs/orion_ecaf_new_rpt.log 2>&1 &
+00 */1 * * * source ~/.bash_profile; sh -x /application/scripts/edsl_MTD_report.sh > /application/logs/edsl_mtd.log 2>&1 &
+00 05 * * * source ~/.bash_profile; sh -x /application/scripts/pos_cleanup.sh >/application/logs/pos_cleanup.log 2>&1 &
+00 */2 * * * source ~/.bash_profile; sh -x /application/scripts/edsl_repush.sh >/application/logs/edsl_repush 2>&1 &
+00 01,13 * * * source ~/.bash_profile;sh -x /application/scripts/New_Digital_Aadhar_Prepaid_MTD_Report_Last_7Days.sh >/application/logs/New_Digital_Aadhar_Prepaid_last_7days.log
+
+
+ssh eca_user@10.5.203.135
+
+
+sftp server eca_user@10.5.203.135
+Airtel@786
+
+
+
+aadhar_user
+Airtel@123
+
+OTP count excedded>>>>
+
+delete from otp_Request where msisdn='8690129242' and OTPCOUNTER='3';
+
+
+Dear Team,
+
+We are unable to add CRO & Not found CRO detail on Activation portal . Please help 
+
+URL:- http://125.16.74.61/eActivate/
+
+Store ID	OLMS ID	CRO Name	Adhar Num	Mobile Num	Lapu	SFO Code
+-19482	A1U9YTGI	PRANAY THAKUR	367125436102	9685189475	9755280654	9685189475
+
+solutions:-
+
+agent_master 
+SFO code,lapu number must be same on both agent master & store master table
+userid should not be null 
+
+
+
+
+NON_AADHAR_REPORT_PREPAID_CIRCLE_SMS.sh
+
+
+
+From: Mohit Kapoor 
+Sent: Monday, November 26, 2018 11:23 AM
+To: Govind Mishra <GovindKumar.Mishra@airtel.com>
+Cc: Sujato Ghatak <Sujato.Ghatak@airtel.com>; Aanchal Mehta <Aanchal.Mehta@airtel.com>; Prabhu M <Prabhu1.M@airtel.com>; Sairamsingh Bondili <a_Sairamsingh.Bondili@airtel.com>; encasa_itsupport <encasa_itsupport@airtel.com>
+Subject: RE: SMS ALERT ON ACTIVATIONS
+
+Hi Govind,
+
+Numbers added in sms report.
+
+Thanks & Regards,
+Mohit Kapoor
+Encasa-IT
+
+
+From: Govind Mishra 
+Sent: Monday, November 26, 2018 11:18 AM
+To: Sairamsingh Bondili <a_Sairamsingh.Bondili@airtel.com>; Mohit Kapoor <a_Mohit.Kapoor@airtel.com>; encasa_itsupport <encasa_itsupport@airtel.com>
+Cc: Sujato Ghatak <Sujato.Ghatak@airtel.com>; Aanchal Mehta <Aanchal.Mehta@airtel.com>; Prabhu M <Prabhu1.M@airtel.com>
+Subject: RE: SMS ALERT ON ACTIVATIONS
+
+Dear Sai,
+
+Request to the below number circle wise SMSs, pls confirm once done
+
+Number	Name	Circle
+9600000143	Prabhu M	Kerala, TN, Chennai
+9894010075	Geetha K	Kerala, TN, Chennai
+
+
+
+ 
+Govind Kumar Mishra
+Bharti Airtel Limited
+C-3164, 3rd Floor | Plot No # 16 | Udyog Vihar, Phase IV | Gurgram
++91 98 10 597439 | govindkumar.mishra@airtel.com
+ 
+
+From: Prabhu M 
+Sent: Saturday, November 24, 2018 4:49 PM
+To: Govind Mishra
+Cc: Sujato Ghatak; Aanchal Mehta
+Subject: FW: SMS ALERT ON ACTIVATIONS
+
+Hi Govind,
+
+Please provide the access urgent
+
+From: Prabhu M 
+Sent: Wednesday, November 21, 2018 10:59 PM
+To: Aanchal Mehta <Aanchal.Mehta@airtel.com>
+Cc: Sujato Ghatak <Sujato.Ghatak@airtel.com>
+Subject: RE: SMS ALERT ON ACTIVATIONS
+
+Hi Aanchal,
+
+Please find the details
+
+Number	Name	Role
+9600000143	Prabhu M	SO Team
+9894010075	Geetha K	SO Team
+
+
+From: Aanchal Mehta 
+Sent: Wednesday, November 21, 2018 7:55 AM
+To: Prabhu M <Prabhu1.M@airtel.com>
+Cc: Manikandan R <Manikandan1.R@airtel.com>; Sujato Ghatak <Sujato.Ghatak@airtel.com>
+Subject: RE: SMS ALERT ON ACTIVATIONS
+
+Hi Prabhu – Please mention name and roles for both numbers.
+
+Regards
+Aanchal Mehta
+
+From: Prabhu M 
+Sent: Tuesday, November 20, 2018 6:04 PM
+To: Aanchal Mehta
+Cc: Manikandan R; Sujato Ghatak
+Subject: SMS ALERT ON ACTIVATIONS
+
+Dear Aanchal,
+
+Please include the below numbers for FTA sms 
+
+9600000143
+9894010075
+
+
+
+
+Regards,
+SairamSingh,
+Encasa Support Team,
+PH:- 01204220582,
+BIN:- =IN_ENCASA_IT_ECAF.
+
+From: Rakesh Bhagat 
+Sent: Tuesday, November 27, 2018 2:03 PM
+To: encasa_itsupport <encasa_itsupport@airtel.com>
+Subject: FW: Repush steps
+
+ 
+ 
+++
+From: Anil Juneja <anil.juneja@airtel.com>
+Date: Friday, 16 November 2018 at 5:53 PM
+To: Rakesh Bhagat <rakesh1.bhagat@airtel.com
+Subject: Repush steps
+ 
+Hello Rakesh,
+ 
+As Discussed,
+ 
+Please find Api’s.
+ 
+Sequence in Non Aadhaar:  
+ 
+1.	Caf_submitted
+2.	Rtv_pending(Outstation & Non Aadhar)
+3.	Rtv_positive(Outstation)
+4.	Ev_pending(
+5.	Ev_success
+6.	Dedupe_pending
+7.	Dedupe_add_success
+8.	Pacs_pending
+9.	Pacs_success
+ 
+Repush Scenarios :
+ 
+1.	When status ‘caf_submitted’  use Api  : http://10.5.99.116:7004/orion-prepaid/nonaadhaar/ev/repush?caf=A08A0ISX3D
+ 
+2.	Status : ev_success | dedupe_pending 
+use api : http://10.5.99.117:7005/orion-dedupe/orion/dedupe/submit
+Headers: 
+ 
+[{"key":"username","value":"ecafStg","description":"","type":"text","enabled":true},
+{"key":"Content-Type","value":"application/json","description":"","type":"text","enabled":true}]
+ 
+Body Steps
+ 
+1.	Delete entry from proviiosn_consumer_data for application_name : ‘dedupe’ for all caf.
+2.	Extract json_data from mob_request_logging for all caf
+3.	Give extract json in Body part for the api.
+ 
+4.	Dedupe_add_success | pacs_pending
+ 
+Api : http://10.5.99.117:7005/pacs/orion/pacs/provision
+Headers: 
+ 
+[{"key":"username","value":"ecafStg","description":"","type":"text","enabled":true},
+{"key":"Content-Type","value":"application/json","description":"","type":"text","enabled":true}]
+ 
+Body Steps
+ 
+1.	Delete entry from provision_consumer_data for application_name : ‘PACS for all caf and from pacs_txn (global_txn_id)
+2.	Extract json_data from mob_request_logging for all caf
+3.	Give extract json in Body part for the api.
+ 
+ 
+Thanks
+Anil
+ 
+ 
+ 
+Tsak Transaction Table:-
+
+LOB: 9483072357
+For the Below Mentioned Number, customer requested for SIM SWAP, we processed through ecaf, we clearly attached customer poi and poa, but ev got rejected due to EV REJECT, please help the issue.
+
+
+Prepaid FTD query:
+
+select a.caf_number,a.msisdn,a.sim_number,a.imsi_number,
+case when a.NDS_CIRCLE_CODE is not null then a.field_agent else c.lapu_number end LAPU_NUMBER,case when d.AGENT_NAME is not null then d.AGENT_NAME else a.POS_AGENT_NAME end AGENT_NAME,a.field_agent AGENT_NUMBER,a.CONNECTION_TYPE,
+case when upper(a.CUSTOMER_TYPE)='LOC' then 'Local' else 'Outstation' end user_type,a.product_type,a.status,
+case when a.NDS_CIRCLE_CODE is null then i.circle_name else h.circle_name end circle_name,'' PHOTO_CAPTURED_TIMESTAMP,
+to_char(a.CAF_GENERATION_DATE,'dd/mm/yyyy hh24:mi:ss') APP_SUBMIT_TIMESTAMP,to_char(a.EV_TRIGGER_START,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_START_TIMESTAMP,to_char(a.EV_TRIGGER_END,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_END_TIMESTAMP,
+null DE_VALIDATION_STATUS,a.EV_FAILED_REASON DE_FAILURE_STATUS,a.EV_AGENT,a.EV_AGENT_OLM_ID,
+case pt.RETURN_VALUE when 0 then 'pacs_success' WHEN 1 then 'pacs_failed' else NULL  end PACS_STATUS, pt.ERROR_DESC PACS_FAILURE_REASON,
+to_char(pt.CREATED_ON,'dd/mm/yyyy hh24:mi:ss') PACS_END_TIMESTAMP,j.alternate_number
+from txn_master a
+left join TRANSACTION_MASTER_REFERENCE b on (a.txn_id=b.txn_id)
+left join store_master c on(a.field_store=c.sales_code)
+left join agent_master d on (d.user_id=a.field_agent)
+left join circle_master h on (h.NDS_CIRCLE_CODE=a.NDS_CIRCLE_CODE)
+left join circle_master i on (i.circle_id=c.circle)
+left join PERSONAL_DETAILS j on (j.txn_id=a.txn_id)
+left join pacs_txn pt on (pt.GLOBAL_TXN_ID=a.txn_id and pt.SNAP_DT>=TRUNC(SYSDATE) AND pt.SNAP_DT<TRUNC(SYSDATE+1))
+where a.caf_number is not null and a.product_type='Prepaid' and a.CREATED_DATE>=trunc(sysdate) and is_aadhar=0 and is_tatatele is null;
+
+Tatatele FTD query:
+
+select a.caf_number,a.msisdn,a.sim_number,a.imsi_number,
+case when a.NDS_CIRCLE_CODE is not null then a.field_agent else c.lapu_number end LAPU_NUMBER,case when d.AGENT_NAME is not null then d.AGENT_NAME else a.POS_AGENT_NAME end AGENT_NAME,a.field_agent AGENT_NUMBER,a.CONNECTION_TYPE,
+case when upper(a.CUSTOMER_TYPE)='LOC' then 'Local' else 'Outstation' end user_type,a.product_type,a.status,
+case when a.NDS_CIRCLE_CODE is null then i.circle_name else h.circle_name end circle_name,'' PHOTO_CAPTURED_TIMESTAMP,
+to_char(a.CAF_GENERATION_DATE,'dd/mm/yyyy hh24:mi:ss') APP_SUBMIT_TIMESTAMP,to_char(a.EV_TRIGGER_START,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_START_TIMESTAMP,to_char(a.EV_TRIGGER_END,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_END_TIMESTAMP,
+null DE_VALIDATION_STATUS,a.EV_FAILED_REASON DE_FAILURE_STATUS,a.EV_AGENT,a.EV_AGENT_OLM_ID,
+case pt.RETURN_VALUE when 0 then 'pacs_success' WHEN 1 then 'pacs_failed' else NULL  end PACS_STATUS, pt.ERROR_DESC PACS_FAILURE_REASON,
+to_char(pt.CREATED_ON,'dd/mm/yyyy hh24:mi:ss') PACS_END_TIMESTAMP,j.alternate_number
+from txn_master a
+left join TRANSACTION_MASTER_REFERENCE b on (a.txn_id=b.txn_id)
+left join store_master c on(a.field_store=c.sales_code)
+left join agent_master d on (d.user_id=a.field_agent)
+left join circle_master h on (h.NDS_CIRCLE_CODE=a.NDS_CIRCLE_CODE)
+left join circle_master i on (i.circle_id=c.circle)
+left join PERSONAL_DETAILS j on (j.txn_id=a.txn_id)
+left join pacs_txn pt on (pt.GLOBAL_TXN_ID=a.txn_id and pt.SNAP_DT>=TRUNC(SYSDATE) AND pt.SNAP_DT<TRUNC(SYSDATE+1))
+where a.caf_number is not null and a.product_type='Prepaid' and a.CREATED_DATE>=trunc(sysdate) and is_aadhar=0 and is_tatatele=1;
+
+
+Prepaid MTD query:
+
+select a.caf_number,a.msisdn,a.sim_number,a.imsi_number,
+case when a.NDS_CIRCLE_CODE is not null then a.field_agent else c.lapu_number end LAPU_NUMBER,case when d.AGENT_NAME is not null then d.AGENT_NAME else a.POS_AGENT_NAME end AGENT_NAME,a.field_agent AGENT_NUMBER,a.CONNECTION_TYPE,
+case when upper(a.CUSTOMER_TYPE)='LOC' then 'Local' else 'Outstation' end user_type,a.product_type,a.status,
+case when a.NDS_CIRCLE_CODE is null then i.circle_name else h.circle_name end circle_name,'' PHOTO_CAPTURED_TIMESTAMP,
+to_char(a.CAF_GENERATION_DATE,'dd/mm/yyyy hh24:mi:ss') APP_SUBMIT_TIMESTAMP,to_char(a.EV_TRIGGER_START,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_START_TIMESTAMP,to_char(a.EV_TRIGGER_END,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_END_TIMESTAMP,
+null DE_VALIDATION_STATUS,a.EV_FAILED_REASON DE_FAILURE_STATUS,a.EV_AGENT,a.EV_AGENT_OLM_ID,
+case pt.RETURN_VALUE when 0 then 'pacs_success' WHEN 1 then 'pacs_failed' else NULL  end PACS_STATUS, pt.ERROR_DESC PACS_FAILURE_REASON,
+to_char(pt.CREATED_ON,'dd/mm/yyyy hh24:mi:ss') PACS_END_TIMESTAMP,j.alternate_number
+from txn_master a
+left join TRANSACTION_MASTER_REFERENCE b on (a.txn_id=b.txn_id)
+left join store_master c on(a.field_store=c.sales_code)
+left join agent_master d on (d.user_id=a.field_agent)
+left join circle_master h on (h.NDS_CIRCLE_CODE=a.NDS_CIRCLE_CODE)
+left join circle_master i on (i.circle_id=c.circle)
+left join PERSONAL_DETAILS j on (j.txn_id=a.txn_id)
+left join pacs_txn pt on (pt.GLOBAL_TXN_ID=a.txn_id and pt.SNAP_DT>=TRUNC(SYSDATE-7) AND pt.SNAP_DT<TRUNC(SYSDATE+1))
+where a.caf_number is not null and  a.product_type='Prepaid' and a.connection_type!='sim_swap' and a.CREATED_DATE>=trunc(sysdate-7) and a.CREATED_DATE<trunc(sysdate+1) and is_aadhar=0 and is_tatatele is null;
+
+Tatatele MTD query:
+
+select a.caf_number,a.msisdn,a.sim_number,a.imsi_number,
+case when a.NDS_CIRCLE_CODE is not null then a.field_agent else c.lapu_number end LAPU_NUMBER,case when d.AGENT_NAME is not null then d.AGENT_NAME else a.POS_AGENT_NAME end AGENT_NAME,a.field_agent AGENT_NUMBER,a.CONNECTION_TYPE,
+case when upper(a.CUSTOMER_TYPE)='LOC' then 'Local' else 'Outstation' end user_type,a.product_type,a.status,
+case when a.NDS_CIRCLE_CODE is null then i.circle_name else h.circle_name end circle_name,'' PHOTO_CAPTURED_TIMESTAMP,
+to_char(a.CAF_GENERATION_DATE,'dd/mm/yyyy hh24:mi:ss') APP_SUBMIT_TIMESTAMP,to_char(a.EV_TRIGGER_START,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_START_TIMESTAMP,to_char(a.EV_TRIGGER_END,'dd/mm/yyyy hh24:mi:ss') DE_VALIDATION_END_TIMESTAMP,
+null DE_VALIDATION_STATUS,a.EV_FAILED_REASON DE_FAILURE_STATUS,a.EV_AGENT,a.EV_AGENT_OLM_ID,
+case pt.RETURN_VALUE when 0 then 'pacs_success' WHEN 1 then 'pacs_failed' else NULL  end PACS_STATUS, pt.ERROR_DESC PACS_FAILURE_REASON,
+to_char(pt.CREATED_ON,'dd/mm/yyyy hh24:mi:ss') PACS_END_TIMESTAMP,j.alternate_number
+from txn_master a
+left join TRANSACTION_MASTER_REFERENCE b on (a.txn_id=b.txn_id)
+left join store_master c on(a.field_store=c.sales_code)
+left join agent_master d on (d.user_id=a.field_agent)
+left join circle_master h on (h.NDS_CIRCLE_CODE=a.NDS_CIRCLE_CODE)
+left join circle_master i on (i.circle_id=c.circle)
+left join PERSONAL_DETAILS j on (j.txn_id=a.txn_id)
+left join pacs_txn pt on (pt.GLOBAL_TXN_ID=a.txn_id and pt.SNAP_DT>=TRUNC(SYSDATE-7) AND pt.SNAP_DT<TRUNC(SYSDATE+1))
+where a.caf_number is not null and  a.product_type='Prepaid' and a.connection_type!='sim_swap' and a.CREATED_DATE>=trunc(sysdate-7) and a.CREATED_DATE<trunc(sysdate+1) and is_aadhar=0 and is_tatatele=1;
+
+
+
+>>>>>> Agent id according to circle team>>>
+
+UPDATE AGENT_MASTER SET lapu_number='7024796637',postpaid_sfo_code='9752049544',store_id='8797',circle_id='106' where AGENT_OLM_ID='b0013060';
+
+ 
+ 
+>>>>>>>>>>>>>>>NOTE
+
+if status is ev_pending on ecaf & task transaction having no details then repush is only remedy.
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>
+
+Given number has been ported in airtel and ready for TV  but demographic is not update in Pacs.
+
+Please help to get re push DE form your end and confirm 
+
+
+
+
+provision consume data :-
+provison txn
+outh TXN id
+
+
+
+
+
+
+>>>>>>>>>>>>>RTV utility>>>>>>>>>>>>>>>.
+
+
+From: Amit Kataria 
+Sent: Monday, November 26, 2018 1:55 PM
+To: Chandan Kumar <a_Chandan2.Kumar@airtel.com>
+Subject: FW: RTV Utility
+
+
+
+From: Amit Kataria <amit2.kataria@airtel.com>
+Date: Monday, November 26, 2018 at 1:54 PM
+To: Rakesh Bhagat <rakesh1.bhagat@airtel.com>, Mohit Kapoor <a_Mohit.Kapoor@airtel.com>, Vicky Ajay <vicky.ajay@airtel.com>, Vikrant Bhargava <vikrant.bhargava@airtel.com>
+Cc: Nishant Pant <Nishant.Pant@airtel.com>
+Subject: RTV Utility
+
+Following repush RTV_Pending cases of last 30 days to RTV Center via FTP
+1.	Login to server mnt_user@10.5.251.103
+2.	Navigate to ~/cropped-images-exec/bin
+1.	Execute backfill.sh. This will execute a curl request on localhost and regenerate rtv_pending file in /opt/cropped-images/transfer and upload it to SFTP Path. SFTP Path is written in ~/cropped-images-exec/conf/cropped-images.properties
+ 
+ 
+Following utility can be executed to regenerate and repush RTV Pending/RTV NCT/RTV_Hold FTD cases to RTV Server.
+1.	Login to server mnt_user@10.5.251.103
+2.	Navigate to ~/cropped-images-exec/bin
+1.	Execute rtv_push.sh. This will execute a curl request on localhost and regenerate rtv_pending file in /opt/cropped-images/transfer and upload it to SFTP Path. SFTP Path is written in ~/cropped-images-exec/conf/cropped-images.properties
+3.	You can monitor logs in ~/cropped-images-exec/log/sqlexport.log
+ 
+ 
+Start/Stop RTV Utility
+1.	Login to server mnt_user@10.5.251.103
+2.	Navigate to ~/cropped-images-exec/bin 
+a.	Execute ./handler.sh -i sqlexport -l logback.xml stop
+3.	Navigate to ~/cropped-images-exec/bin 
+a.	Execute ./handler.sh -i sqlexport -l logback.xml start
+4.	Monitor logs in ~/cropped-images-exec/log/sqlexport.log
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+RE: RePush these dongle cases
+
+
+update thor_txn_master set myop_id='BPL2994086' where caf_number = 'D305041304' status = 'CRM_SUBMIT_SUCCESS';
+
+
+Regards
+Mohit Gupta
+8884270888
+
+
+>>>>>>>>>>>>>>>>>>>> CAF FAILED
+
+Task_transaction:-
+task_Data:-
+ORION_TXN:-
+
+ERROR:-error while communicating Orion depupe through rest API
+
+
+curl http://10.5.244.102:7005/orion-prepaid/nonaadhaar/dedupe/repush?caf="9676196495"
+
+
+
+>>>>>>>>>>>>ECAF >>>>>>>>>>>>>>>>>>>>>>
+
+
+select * from TASK_TRANSACTION where caf in ('D272852698');
+
+select * from TASK_DATA where caf in ('D272852698');
+
+
+insert into TASK_TRANSACTION_TEMP
+select * from TASK_TRANSACTION where caf in ('D322237543');
+
+insert into TASK_DATA_TEMP
+select * from TASK_DATA where caf in ('D322237543');
+
+
+DELETE from TASK_TRANSACTION where caf in ('D322237543');
+
+DELETE from TASK_DATA where caf in ('D322237543');
+
+
+>>>>>>>>>>>>>>>>>>
+store additon:- 
+insert into store_master values ('-13287','Bhilai','104095209','Jyoti sales corporation','104095209','Chhattisgarh','490023','106','9425866399','MP-Raipur','0',' ','B0201092','8827898262','109,Dhillion Complex,Bhilai','1','1','','','','');
+
+
+
+insert into store_master values ('-13122','Chennai','-13122','Redact Infotel Pvt Ltd','-13122','Tamil Nadu','600106','Chennai','9597343059','TN West','300','0','B0050516','9597343059','No. C1 and C2,PASUMPON STREET, SIDCO INDUSTRIAL ESTATE AUMBAKKAM, Chennai  600 106','1','1','','','','');
+
+
+store_add:->
+
+="insert into store_master values ('"&A2&"','"&B2&"','"&C2&"','"&D2&"','"&E2&"','"&F2&"','"&G2&"','"&H2&"','"&I2&"','"&J2&"','"&K2&"','"&L2&"','"&M2&"','"&N2&"','"&O2&"','"&1&"','"&1&"','"&"','"&"','"&"','"&"');"
+
+
+Excel query build
+
+="update store_master set pos_code='"&H2&"' where sales_code='"&A2&"';"
+
+
+update thor_txn_master set upc_code='IL648281' where caf_number = 'D462686115';
+
+update set thor_txn_master set upc_ocde='"&C2&"' where caf_number ='"&E2&"';
+
+
+
+>>>>>>>>>
+
+
+
+>>>>>>>>>>>
+
+Query for agent configuration:-
+
+SELECT * FROM agent_master where AADHAR_NUMBER in ('994330921133','813962490994','209896096465','775072015310','893653891945','768121398845','542148723925','562445040700');
+
+select * from store_master where SALES_CODE='-13095';
+
+select * from agent_master;
+
+select * from circle_master;
+
+--UPDATE agent_master set LAPU_NUMBER='8527734364',store_id='11013',dsl_sfo_code='8527734332',circle_id='102' where AGENT_OLM_ID='b0013060';
+
+select * from agent_master where CIRCLE_ID='102';
+
+select * from store_master;
+
+
+>>>>>>>>>>>>>>>>>
+
+select * from TASK_TRANSACTION where caf in ('D272852698');
+
+select * from TASK_DATA where caf in ('D272852698');
+
+
+insert into TASK_TRANSACTION_TEMP
+select * from TASK_TRANSACTION where caf in ('D322237543');
+
+insert into TASK_DATA_TEMP
+select * from TASK_DATA where caf in ('D322237543');
+
+
+DELETE from TASK_TRANSACTION where caf in ('D322237543');
+
+DELETE from TASK_DATA where caf in ('D322237543');
+
+
+>>>>>>
+
+PACS sucess but DE not upddate on PACS end .
+
+select CREATED_DATE,CAF_NUMBER,CONNECTION_TYPE,msisdn,sim_number,status,imsi_number,TXN_ID,
+PROVISION_FAILURE_REASON,PRODUCT_TYPE,IS_AADHAR from TXN_MASTER where MSISDN IN ('9940700755');
+
+
+select * from provision_txn where MSISDN='9940700755';
+>>>>>
+
+
+
+SIM SWAP CAF CRETATION FAILURE :--->>postpaid/prepaid repush
+
+
+select * from transaction_master_reference where txn_id in ('300408920','300705593','300405540');
+
+
+
+--update transaction_master_reference set CAF_CREATION_FAILURE_STAGE='notification_sent_to_client' where txn_id in ('300408920','300705593','300405540');
+
+
+>>>>>>>>>>>EV Pending but in orion_txn  column dedube_status having null value post curl dedube_sucess & PACS SUCESS
+
+curl http://10.5.244.102:7005/orion-prepaid/nonaadhaar/dedupe/repush?caf=E047877718
+
+
+>>>>>>>>>>>>>>>.Airtel Payment banking not visible in E activation application on -13618 channel ID.
+
+
+update store_master set APB_RETAILER='1' where sales_code='-13618';
+
+
+>>>>>>>>>>
+
+Please use below query to provide missing DE details from ev portal DB.
+
+select caf,msisdn,task_state,olm_id "DE AGENT OLMS ID",to_char(created_on,'DD/MM/YYYY') "DE VALIDATION DATE",to_char(created_on,'HH24:MI:SS') "DE VALIDATION TIME" 
+from (select caf,msisdn,task_state,olm_id,created_on,row_number() over (partition by caf order by created_on desc) flt
+from task_transaction where msisdn in ('7624966117','9831820778','9831987047') )tmp where flt=1;
+
+
+
+CAF_FAILED/CAF_SUBMITTED retail mnp
+
+dedube repushed:-http://10.5.252.154:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=F164705655
+
+
+final
+
+curl -v http://10.5.244.102:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=F164705655
+
+
+curl -v http://10.5.244.102:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=N028200899
+
+curl -v http://10.5.252.154:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=F164705655
+
+dedupe Override:-
+
+curl -X POST  http://10.5.252.154:7004/orion-dedupe/orion/dedupe/modifyroute -H 'content-type: application/json' -H 'username:ecafStg' -d '{"routeId":"consume-dedupe-from-retry-queue-route","command":"start"}'
+
+
+
+EV case :-
+
+EVREADY
+SUBMITTED
+ACCEPTED
+
+
+
+
+server :-
+
+DR
+
+10.92.204.21
+
+
+
+  Please help to update correct Term code as per attached file
+user unable to activate any postpaid connection
+
+POS_CODE_RTL & store MASTER POS_CODE for the same
+
+
+select * from otp_request where MSISDN='8530404142' order by created_on desc;
+
+
+
+
+if non butterfly cases || ev sucess || ev pending|| sim swap caf creation failure
+
+SIM_SWAP Provision_failure:-
+
+select * from txn_master where MSISDN='9110202094' order by created_date desc;
+
+
+select * from existing_customer_profile where txn_id='316041819';
+
+butterfly cloumn should be 0 for repushed.
+
+
+Need to change MSISDN and CAF_NUMBER for the same
+
+
+
+
+
+b006616
+
+
+remove 200 ok ERROR:-
+
+
+select * from store_master where sales_code='7961';
+
+select * from CIRCLE_MASTER;
+
+111
+
+1106
+
+GUJARAT - RAJKOT ZONE
+
+update  CRM_ZONE_MASTER;
+
+9998249709:sfo
+9601049297:l
+
+Insert into CRM_ZONE_MASTER values ('1900','GUJARAT - RAJKOT ZONE','1106','111','2');
+
+
+
+simswap : -ev_success case 
+
+update ev_pending first
+
+
+curl -X POST http://10.5.245.179:7005/simswap-app/simswap/response/evportal -H 'Content-Type:application/json' -d '{"selectedMSISDN":"8456034562","cafNumber":"J158648299","evDate":1544613110401,"employeeName":"PRUDHVI RAJ","designation":"EV Officer","status":"ACCEPTED","olmId":"A14QF1HD","evCompletedTimestamp":1544613110401,"reason":"","attributes":{"GENERAL INFORMATION":{"value":"","type":"LABEL","editable":false},"CAF NUMBER":{"value":"J158648299","type":"FIELD","editable":false},"CONNECTION TYPE":{"value":"sim_swap","type":"FIELD","editable":false},"MSISDN":{"value":"8456034562","type":"FIELD","editable":false},"CIRCLE NAME":{"value":"AP","type":"FIELD","editable":false},"CAF GENERATION DATE":{"value":"Wed Dec 12 16:41:49 IST 2018","type":"FIELD","editable":false},"CUSTOMER/POA/POI INFORMATION":{"value":"","type":"LABEL","editable":false},"CUSTOMER NAME":{"value":"racha  sulochana","type":"FIELD","editable":true},"FATHER NAME":{"value":"upended","type":"FIELD","editable":true},"DOB":{"value":"15-May-1965","type":"FIELD","editable":true,"dataType":"DATE","required":true,"dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1},"dateType":"dob","longDate":"-146208600000"},"GENDER":{"value":"M","type":"FIELD","editable":true},"NEW SIM_NUMBER":{"value":"8991000900527223336U","type":"FIELD","editable":false},"POI TYPE":{"value":"UID CARD (ADHAAR CARD)","type":"FIELD","editable":false},"POI NUMBER":{"value":"331877333091","type":"FIELD","editable":true},"POI ISSUE DATE":{"value":"10-Sep-2015","type":"FIELD","editable":true,"dataType":"DATE","dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1},"dateType":"issuedate","longDate":"1441823400000"},"POI ISSUE PLACE":{"value":"Warangal","type":"FIELD","editable":true},"Customer Details(As per system)":{"value":"","type":"LABEL","editable":false},"Customer Name":{"value":"R SULOCHANA . .","type":"FIELD","editable":false},"Father Name":{"value":"R UPENDAR","type":"FIELD","editable":false},"Existing DOB":{"value":"","type":"FIELD","editable":false,"dataType":"DATE","dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1}},"Old Sim Number":{"value":"8991490490007708455","type":"FIELD","editable":false},"Circle Name":{"value":"AP","type":"FIELD","editable":false},"OTHERS":{"value":"","type":"LABEL","editable":false},"IMSI":{"value":"404490892258079","type":"FIELD","editable":false},"PRODUCT TYPE":{"value":"Prepaid","type":"FIELD","editable":false},"POS NAME":{"value":"Ret-Ret-Sri Laxmi Mobiles Planet","type":"FIELD","editable":false},"POS CODE":{"value":"8978410295","type":"FIELD","editable":false},"POS ADDRESS":{"value":"647 1 Budhanagar Main Road Uppal Depot Hyderabad","type":"FIELD","editable":false}},"interactionId":"fda1ecbb-d50b-480d-a58a-bb8097ac97e71544612616570"}'
+
+
+
+. how to re push caf_creation_faild?
+
+=> check in txn_master_refernece tabel and set value "notification sent to client" .
+
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>> butterfly cxases repushed
+
+curl -X POST http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/submitorder/repush -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"cafNumbers":["D305780785"],"posCodeCases" : "false"}'
+
+
+
+curl -X POST http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/submitorder/repush 
+
+
+EV pending butterfly cases:-
+
+Kindly do the EV then close
+
+EV_READY on EV_portal
+
+curl -X POST http://evportal.airtel.com/opus-evtask/opus/evtask/repushTrigger -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"cafNumbers":["D313431341"]}'
+
+>>>>>>>>>>>>>>>>>>>
+ sim swap count :-
+
+   Select count* From Txn_Master Where Connection_Type='sim_swap' And (Is_Aadhar != 1 Or Is_Aadhar Is Null) and is_tatatele is null And Caf_Number Is Not Null And  
+   Trunc(Created_Date) = Trunc(Sysdate-1) And Status='ev_success' and product_type='Postpaid';
+
+
+select STATUS,count(1) as count from eactivate.txn_master where trunc(created_date) = trunc(sysdate-1) and connection_type='sim_swap' and (is_aadhar != 1 or is_aadhar is null) AND caf_number is not null
+group by status union all select 'total' STATUS, count(1) as count from eactivate.txn_master where trunc(created_date) = trunc(sysdate-1) and connection_type='sim_swap' and 
+(is_aadhar != 1 or is_aadhar is null) AND caf_number is not null AND is_tatatele is null;
+
+
+
+SFO CODE not reflecting then check SFO_CODE for the same
+
+   select * from CRM_POS_MASTER where SFO_MOBILE_NUMBER='7838774522'; 
+
+
+
+document image:-
+
+
+select caf_NUMBER,TXN_ID,INTERACTION_ID from txn_master where CAF_NUMBER in ('I080477436','I080477599','I080444194');
+
+
+SELECT IMAGE_TYPE,IMAGE_URL,TXN_ID,SCORE FROM DOCUMENT_DETAILS WHERE TXN_ID IN ('20be7260-5663-4c67-921a-2577559ae0dd1551364150301',
+'7ef4db23-88bf-4927-a091-6a1d73b95d2f1551362912828','d164880d-bd8c-4826-b8d3-582c6c0c712b1551363660387');
+
+
+
+loader :-
+
+ nohup sqlldr osb_int_user/osb_int_user@10.5.207.30:1521/NPGDB ERRORS=170000000 control=/u01/NPGDB_17th/loader1.ctl &
+ 
+ 
+load data infile '/u01/NPGDB_17th/a.csv' insert into table NPG_DATA_MASTER_28_FEB19 fields terminated by "|" (MSISDN,LRN,CIRCLE,UPC_OPERATOR_ID,PORT_IN_DATE date"DD-MM-YY",PORT_IN_STATUS)
+
+
+
+
+CAF DR:-
+
+select count(1) from txn_master where (created_date)>sysdate-(10/1440);
+
+
+
+certificate import:--
+
+sudo keytool -import -trustcacerts -alias optics -file /tmp/optims.crt -keystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64/jre/lib/security/cacerts -storepass changeit
+
+keytool -import -trustcacerts -alias uidai -file /data/certificates/uidai_auth_prod.cer -keystore /data/weblogic/wlserver_10.3/server/lib/DemoTrust.jks -storepass DemoTrustKeyStorePassPhrase
+
+keytool -import -trustcacerts -alias uidai -file /data/certificates/uidai_auth_prod.cer -keystore /data/weblogic/wlserver_10.3/server/lib/DemoIdentity.jks -storepass DemoIdentityKeyStorePassPhrase
+
+keytool -import -trustcacerts -alias uidai -file /data/certificates/uidai_auth_prod.cer -keystore /u01/app/oracle/middleware/wlserver_10.3/server/lib/DemoTrust.jks -storepass DemoTrustKeyStorePassPhrase
+
+keytool -import -trustcacerts -alias uidai -file /data/certificates/uidai_auth_prod.cer -keystore /u01/app/oracle/middleware/wlserver_10.3/server/lib/DemoIdentity.jks -storepass DemoIdentityKeyStorePassPhrase
+
+
+
+>>>>>>>>>>>>...
+
+/usr/local/pgsql103/bin/psql -U postgres -d feasibility -p 5432
+
+mysql -uroot -p
+
+
+>>>>>>>>>>>>>>>>
+
+stage :-
+
+Dweblogic.ProductionModeEnabled=false
+
+
+
+>>>>>NPGDB SCAN name >>>>>
+
+npgdbrac-scan.airtel.com 
+
+
+
+
+ECAF REdish 
+
+B0091062@N2MCITL-CAF001 ~]$ redis-cli
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+Could not connect to Redis at 127.0.0.1:6379: Connection refused
+not connected>
+[B0091062@N2MCITL-CAF001 ~]$ redis-cli -h 10.5.214.197
+10.5.214.197:6379> info replication
+# Replication
+role:slave
+master_host:10.5.214.199
+master_port:6379
+master_link_status:up
+master_last_io_seconds_ago:0
+master_sync_in_progress:0
+slave_repl_offset:533936299598
+slave_priority:100
+slave_read_only:1
+connected_slaves:0
+master_repl_offset:68473017
+repl_backlog_active:0
+repl_backlog_size:536870912
+repl_backlog_first_byte_offset:2
+repl_backlog_histlen:68473016
+10.5.214.197:6379>
+
+[B0091062@N2MCITL-CAF001 ~]$ redis-cli -h 10.5.214.197
+10.5.214.197:6379>
+[B0091062@N2MCITL-CAF001 ~]$ redis-cli -h 10.5.214.199
+10.5.214.199:6379> get pos.agent.name.validation.required
+"\xac\xed\x00\x05t\x00\x04true"
+10.5.214.199:6379> del pos.agent.name.validation.required
+(integer) 1
+10.5.214.199:6379> get pos.agent.name.validation.required
+"\xac\xed\x00\x05t\x00\x05false"
+10.5.214.199:6379>
+
+
+
+
+10.5.214.197:6379>  get npitpusher.solace.username.beta
+"\xac\xed\x00\x05t\x00\x17dedupepuser@npitBetaVPN"
+10.5.214.197:6379> get npitpusher.solace.username.beta
+"\xac\xed\x00\x05t\x00\x17dedupepuser@npitBetaVPN"
+10.5.214.197:6379> get npitpusher.solace.password
+"\xac\xed\x00\x05t\x00\x13dedupepuser@npitVPN"
+10.5.214.197:6379>
+10.5.214.197:6379> get npitpusher.solace.connection.factory
+"\xac\xed\x00\x05t\x00\x1ejms/npit/npitConnectionFactory"
+10.5.214.197:6379> get npitpusher.solace.url
+"\xac\xed\x00\x05t\x00\x17smf://10.5.197.21:55555"
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+APAY :-
+
+=.=======================Regarding new flow============================================
+
+1. what is AV_SUCCESS?
+
+=> If Number is AV_SUCCESS then Check with CRM team. ( AV_SUCCESS means Varication is successfully)
+
+2. if value in status is null?
+
+=> Need re punch the request.
+
+3. rtv_negative?
+
+=> Customer refuce the tele verification.
+
+4. rtv_postive?
+
+=> Need to re push this type of status.
+
+4. how to re push caf_creation_faild?
+
+=> check in txn_master_refernece tabel and set value "notification sent to client" .
+
+5. if number is etuck is ev_pending and number is not show in  portal?
+
+=> Need to re push.
+
+6. if number is ev_pending/ev_success and in ev_portal showing acceptaed then what we do?
+
+curl http://10.5.244.102:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=E235598599
+
+=> Need to re push.
+
+7. number is stuck in caf_submitted then?
+
+=> Need to re push the request
+
+8.NUmber is pacs_success but DE not avilable then what we do?
+
+=> check the number status from provision_txn tabel ans share to txn id to Pacs team.
+
+9. ORDER_STATUS_CREATED means order genrated ??
+
+=> order genrated form ecaf side.
+
+10. Siebel Submitted means??
+
+=> chek with sibel team.
+
+11. CRM_SUBMIT_SUCCESS?
+
+=> chekc with crm team.
+
+12. OSN_SUCCESS in tv  means??
+
+=> Number is activated. 
+
+13. OSN_SUCCESS in dongle??  
+ 
+=> Number is activated.
+
+14. OSN_SUCCESS in coip new number ?? 
+
+=> Number is activated.
+
+15. number is pacs_successa and customer wants DE then check in provision_txn  table.
+
+=> provision_txn table provide txn-ID to pacs.
+
+==================rtv postive case==================
+
+curl -X POST http://10.5.244.102:7005/orion-prepaid/nonaadhaar/rtv/trigger -H 'content-type: application/json' -d  \
+'{"cafNumber":"E048242761","msisdn":"7043710039","status":"POSITIVE","comments":"POSITIVE-A"}'
+
+
+=========================================ev_success but order is null in butterfly =========================================================
+
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumbers":["D322632597"],
+"posCodeCases" : "true"}' http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/submitorder/repush
+
+
+curl http://10.5.251.187:7004/ecaf-postpaid/ecafPostpaid/submitorder/autoRepush    (bulk utitlity re push method)
+
+
+=========================================caf_submitted but order is null in butterfly for out station=========================================================
+
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumber: “E245481081”
+}' http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/rtv/rtvRepush/v1
+
+
+=========================================caf_submitted but order is null in butterfly for LOC station=========================================================
+
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumber": "F163787911"}' http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/ev/evRepush/v1
+
+
+
+==============================number stuck in ev_success for prepaid===============================
+
+curl http://10.5.244.102:7004/orion-prepaid/nonaadhaar/dedupe/repush?caf=H049756271
+
+
+=================thor postorder repush number stuck in ev_pending===========================
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumberList":[ "9867044585"],
+"ignoreStatus": "true"}' http://10.5.245.177:7005/thor-postorder/api/v1/repush/caf
+
+
+====================sim_swap_ev_pending_ev_success_stuck case===============================================
+please change caf and msisdn in below.
+
+simswap : -ev_success case 
+
+update ev_pending first
+
+
+curl -X POST http://10.5.245.179:7005/simswap-app/simswap/response/evportal -H 'Content-Type:application/json' -d '{"selectedMSISDN":"9845717100","cafNumber":"V073462855","evDate":1544613110401,"employeeName":"PRUDHVI RAJ","designation":"EV Officer","status":"ACCEPTED","olmId":"A14QF1HD","evCompletedTimestamp":1544613110401,"reason":"","attributes":{"GENERAL INFORMATION":{"value":"","type":"LABEL","editable":false},"CAF NUMBER":{"value":"V073462855","type":"FIELD","editable":false},"CONNECTION TYPE":{"value":"sim_swap","type":"FIELD","editable":false},"MSISDN":{"value":"9845717100","type":"FIELD","editable":false},"CIRCLE NAME":{"value":"AP","type":"FIELD","editable":false},"CAF GENERATION DATE":{"value":"Wed Dec 12 16:41:49 IST 2018","type":"FIELD","editable":false},"CUSTOMER/POA/POI INFORMATION":{"value":"","type":"LABEL","editable":false},"CUSTOMER NAME":{"value":"racha  sulochana","type":"FIELD","editable":true},"FATHER NAME":{"value":"upended","type":"FIELD","editable":true},"DOB":{"value":"15-May-1965","type":"FIELD","editable":true,"dataType":"DATE","required":true,"dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1},"dateType":"dob","longDate":"-146208600000"},"GENDER":{"value":"M","type":"FIELD","editable":true},"NEW SIM_NUMBER":{"value":"8991000900527223336U","type":"FIELD","editable":false},"POI TYPE":{"value":"UID CARD (ADHAAR CARD)","type":"FIELD","editable":false},"POI NUMBER":{"value":"331877333091","type":"FIELD","editable":true},"POI ISSUE DATE":{"value":"10-Sep-2015","type":"FIELD","editable":true,"dataType":"DATE","dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1},"dateType":"issuedate","longDate":"1441823400000"},"POI ISSUE PLACE":{"value":"Warangal","type":"FIELD","editable":true},"Customer Details(As per system)":{"value":"","type":"LABEL","editable":false},"Customer Name":{"value":"R SULOCHANA . .","type":"FIELD","editable":false},"Father Name":{"value":"R UPENDAR","type":"FIELD","editable":false},"Existing DOB":{"value":"","type":"FIELD","editable":false,"dataType":"DATE","dateOptions":{"maxDate":"2018-12-12T23:11:30.963Z","minDate":"1899-01-31T18:38:50.000Z","startingDay":1}},"Old Sim Number":{"value":"8991490490007708455","type":"FIELD","editable":false},"Circle Name":{"value":"AP","type":"FIELD","editable":false},"OTHERS":{"value":"","type":"LABEL","editable":false},"IMSI":{"value":"404490892258079","type":"FIELD","editable":false},"PRODUCT TYPE":{"value":"Prepaid","type":"FIELD","editable":false},"POS NAME":{"value":"Ret-Ret-Sri Laxmi Mobiles Planet","type":"FIELD","editable":false},"POS CODE":{"value":"8978410295","type":"FIELD","editable":false},"POS ADDRESS":{"value":"647 1 Budhanagar Main Road Uppal Depot Hyderabad","type":"FIELD","editable":false}},"interactionId":"fda1ecbb-d50b-480d-a58a-bb8097ac97e71544612616570"}'
+
+
+
+
+
+=====================ev_pending for prepaid/postpaid==============
+
+
+
+curl -X POST http://evportal.airtel.com/opus-evtask/opus/evtask/repushTrigger -H 'Content-Type:application/json' -d '{"cafNumbers":["D325046713"]}'
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> DSA Failed
+
+
+>>/application/orion/prepaid/logs
+>>error
+
+
+
+2019-03-05 14:20:37,618 Prepaid-CYN [[ACTIVE] ExecuteThread: '14' for queue: 'weblogic.kernel.Default (self-tuning)']    MobPrepaidAdapterI I - ValidateAndAllocateSim u
+rl called:http://10.14.45.204:8011/services/resource/gatherresourceinformation/validateandallocate/sim/v1
+2019-03-05 14:20:37,725 Prepaid-CYN [[ACTIVE] ExecuteThread: '15' for queue: 'weblogic.kernel.Default (self-tuning)']    RejectionControlle I - REQUEST_INITIATED for re
+tailer Controller . get Caf of Retailer
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+postapid :-
+	
+UPDATE SUBMIT_ORDER_DETAILS SET JSON_REQUEST='{"billPlan":{"planCode":"S1-GKR14FP","planName":"Postpaid MRP 10","noOfFreebies":0,"pricePoint":10,"isAdvanceRentailPlan":true},"boosters":[],"freebies":[],"transactionBean":{"productType":"Postpaid","connectionType":"retail_new","planType":"my_plan","customerType":"OUT","selectedMSISDN":"8899172080","simNumber":"8991000901532760924U","imsiNumber":"405550997633484","custValue":"GoldNew","cafNum":"D322666707","posAgentName":"Atul Sadhotra","status":"pending","customerOrderSubType":"PreToPost","storeId":"-30516","orderType":"New","isAadhaar":false,"agentId":"9906986221","activePayBank":false,"fastLaneDate":"117","uniqueId":"d81ef061-a162-481b-9bfc-a70a585c5dce1552113978593","isQrCode":false,"p2pNewSim":true,"p2pDuration":"156","mnpFlag":true,"hlrID":"117","simType":"USIM","myPlanSelectionDate":"03/09/2019","permanentSameAsAadhar":false,"interactionId":"d81ef061-a162-481b-9bfc-a70a585c5dce1552113978593","permanentSameAsLocal":false},"personalBean":{"title":"Mr.","firstName":"Sarabindu","middleName":"","lastName":"Mali","fatherFirstName":"Gopich","fatherMiddleName":"","fatherLastName":"Mali","gender":"M","dob":"04/05/1980","alternateNumber":"9858025907","referenceName":"Sorab sharma","referenceAddress":"30 Farwala PO- Palam ps rajouri Neartemple Rajouri Palma Jammu & Kashmir 185132","referenceNumber":"8082292914","billType":"Ebill","email":"sarabindu@gmail.com","pan":"","profession":"Salaried","existingNumCount":"0","existingOperator":"","consolidatedBilling":false,"callingPartyNumber":"7006336610","qrCodeScanned":false,"dobPresent":false},"addressBeanList":[{"houseNo":"30","streetName":"farwala","locality":"po palam ps rajouri","landmark":"near temple","district":"rajouri","pinCode":"18512","cityName":"Palma","stateName":"Jammu & Kashmir","addressType":"local"},{"houseNo":"NA","streetName":"Polla para Pollapara","locality":"Balurghat Dakshin Dinajpur","landmark":"Near temple","district":"Dakshin Dinajpur","pinCode":"733133","cityName":"Dinajpur (S)","stateName":"West Bengal","addressType":"permanent"},{"houseNo":"30","streetName":"farwala","locality":"po palam ps rajouri","landmark":"near temple","district":"rajouri","pinCode":"18512","cityName":"Palma","stateName":"Jammu & Kashmir","addressType":"correspondence"},{"houseNo":"30","streetName":"Farwala","locality":"PO- Palam ps rajouri","landmark":"Neartemple","district":"Rajouri","pinCode":"185132","cityName":"Palma","stateName":"Jammu & Kashmir","addressType":"refree"}],"paymentDetailsBean":{"paymentMode":"Cash"},"flowType":"retail_p2p","nonAadhaarBean":{"paoPoiBeans":[{"proofType":"POA","proofName":"Voter Id Card","proofNumber":"UNZ1046861","issuingDate":"2010-10-04","placeOfIssue":"Tapan"},{"proofType":"POI","proofName":"Voter Id Card","proofNumber":"UNZ1046861","issuingDate":"2010-10-04","placeOfIssue":"Tapan"}],"country":"India","nationality":"Indian"},"activationPin":"02820","repushCase":false}
+' WHERE CAF_NUMBER='D322666529';
+
+
+>>>>>>>>>>>>>dedube add success>>>>
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumberList":[ "9867044585"],
+"ignoreStatus": "true"}' http://10.5.245.177:7005/thor-postorder/api/v1/repush/caf
+
+>>>>>>>>>>>>>>>>>>>>>>> EV parked cases repushed
+
+cutl -v http://10.5.244.102:7004/orion-prepaid/nonaadhaar/ev/repush?caf=E169632257
+
+
+
+>>>>>>>>>>>>>>>>>>>>> butterfly cases :-----------------
+
+
+thor query :-->
+
+select status,count(*) from thor_txn_master where trunc(created_date) = trunc(sysdate) group by status;
+
+
+butterfly query :-->
+
+select case when CREATE_ORDER_STATUS='Complete' then 'OSN_SUCCESS' else CREATE_ORDER_STATUS end CREATE_ORDER_STATUS,count(*) as count from SUBMIT_ORDER_DETAILS where trunc(CREATED_DATE)=trunc(sysdate-1) and CAF_NUMBER is not null
+group by CREATE_ORDER_STATUS union  all
+select 'total' CREATE_ORDER_STATUS,count(*) from SUBMIT_ORDER_DETAILS where trunc(CREATED_DATE)>trunc(sysdate-10/24);
+
+
+
+>>>>>>>>>>>>>>>>>>>>>simswap already in progress case:--
+
+
+Please cancel request from siebel end
+
+select * from txn_master where msisdn='9810071206';
+
+
+select * from transaction_master_reference where txn_id='352066405';
+
+>>>>>>>>>>>>>>>>>>sim SWAP EV PARKED :---------
+
+curl -X POST \
+  http://10.5.245.179:7005/simswap-app/simswap/repush/simswap/getAadhaar \
+  -H 'Content-Type: application/json' \
+  -H 'cache-control: no-cache' \
+  -d '{
+    "txnId": "403071022",
+    "status": "notification_sent_to_client"
+}'
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+butterfly live wire query :--
+
+select count(1) from submit_order_details where create_order_status='EV_ACCEPTED' 
+and trunc(created_date)>=trunc(sysdate-1);
+
+select msisdn,caf_number,create_order_status,caf_generation_date,order_failure_reason from submit_order_details where create_order_status='EV_ACCEPTED' 
+and trunc(created_date)>=trunc(sysdate-1)  order by caf_generation_date desc;
+
+select msisdn,caf_number,create_order_status,caf_generation_date,order_failure_reason from submit_order_details where create_order_status='EV_ACCEPTED'  and order_failure_reason='Fault Originator -Siebel Fault - Transaction timeout. Please retry after sometime.'
+and trunc(created_date)>=trunc(sysdate-1) order by caf_generation_date desc ;
+
+
+select count(1) from submit_order_details where create_order_status='EV_ACCEPTED'  and order_failure_reason='Fault Originator -Siebel Fault - Transaction timeout. Please retry after sometime.'
+and trunc(created_date)>=trunc(sysdate) order by caf_generation_date desc;
+
+
+>>>>>>>>>>>>>>>>>>>>> store code w.r.t agent olms id.
+
+SELECT agent_master.AGENT_OLM_ID, agent_master.AADHAR_NUMBER,agent_master.AGENT_NAME,store.STORE_ID,store.LAPU_NUMBER,store.ENABLE_SWAPSIM
+FROM agent_master
+INNER JOIN store
+ON store_master.CIRCLE_ID = orders.CIRCLE_ID where store.circle_id in ('116','110',) and store.ENABLE_SWAPSIM='1';
+
+>>>>>>>>>>>>>>>>>PACS failed >>>>>>>>>.
+
+select CAF_NUMBER,MSISDN,STATE,COMMENTS,CREATED_ON from PROVISION_TXN WHERE STATE='PACS_RETURN_ERROR' and trunc(CREATED_ON)>=trunc(sysdate-1);
+
+
+
+
+
+>>>> butterfly :- 
+
+
+UPDATE SUBMIT_ORDER_DETAILS SET JSON_REQUEST=:x WHERE CAF_NUMBER='D305263651';
+
+
+json _date new :->>upcGeneratedDate":"2019-05-02
+>>>>>>>>>>>>>>>>>>>>>>. Loader :-
+
+
+
+
+[ecaf_user@N2VL-PD-ECAF44 loader]$ cat loader.ctl
+load data infile 'agent_details_01-04-2019.csv' into table AGENT_UPLOAD_TEMP fields terminated by ',' OPTIONALLY ENCLOSED BY '"' trailing nullcols(AGENT_OLM_ID,AGENT_ROLE,CIRCLE_ID,AGENT_NAME,AADHAR_NUMBER,STORE_ID,POSTPAID_SFO_CODE,DSL_SFO_CODE,DSL_CHANNEL_ID,MSISDN,LAPU_NUMBER,LOB)
+[ecaf_user@N2VL-PD-ECAF44 loader]$ ll
+total 8
+-rw-r--r-- 1 oracle oinstall  285 Apr  2 19:19 loader.ctl
+-rwxrwxr-x 1 oracle oinstall 3200 Apr  2 19:16 loader.sh
+[ecaf_user@N2VL-PD-ECAF44 loader]$ ll /home/oracle/agent_loader/
+total 4
+drwxrwxr-x 2 oracle oinstall 76 Apr  2 19:19 archived
+-rw-r--r-- 1 oracle oinstall 90 Mar 20 13:46 db.properties
+drwxrwxr-x 2 oracle oinstall 23 Apr  2 19:19 input
+drwxrwxr-x 2 oracle oinstall 39 Mar 20 13:48 loader
+drwxrwxr-x 2 oracle oinstall  6 Mar 20 13:40 rejected
+[ecaf_user@N2VL-PD-ECAF44 loader]$
+
+
+nohup sqlldr osb_int_user/osb_int_user@10.5.207.30:1521/NPGDB ERRORS=170000000 control=/u01/NPGDB_17th/loader1.ctl &
+
+
+>>>>>>>>>>>>>>>>>>>>
+postpaid cache redish
+
+[api_user@N2MCITL-API020 ~]$ redis_postpaid_master
+
+
+alias master='redis-cli -h 10.5.251.219'
+
+
+PACS For hub wise count :
+
+select b.pacs_hub,count(1)
+from txn_master a,  circle_master b
+where a.created_date>=trunc(sysdate)
+and lower(a.status)='pacs_success'
+and a.nds_circle_code=b.nds_circle_code
+group by b.pacs_hub;
+
+
+>>>>>>>>>>>>>>>>>>>
+
+number stuck at ev_success:-
+
+update status sim_swap_caf_creation_failure
+
+ curl -X POST http://10.5.214.35:7004/simswap-app/simswap/repush/simswap/manual/repush -H 'Content-Type:application/json' -d '{"cafNumbers":["E284333310"]}'
+
+select * from transaction_master_reference where txn_id='367847788'; check order id:
+
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+This journey is blocked for somtime ERROR:-
+
+Pre to post is not available for legacy CRM as parent number is not migrated to siebel .
+
+
+
+
+curl -X POST http://10.5.214.35:7004/simswap-app1/simswap/repush/simswap/manual/repush -H 'Content-Type:application/json' -d '{"cafNumbers":["D322915674"]}'
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+caf_submitted
+
+select count(1) from  eactivate.txn_master where caf_number is not null and  product_type='Prepaid' 
+and connection_type!='sim_swap' and trunc(created_date) = trunc(sysdate) and
+is_aadhar=0 and is_tatatele is null and status='caf_submitted';
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>tata telee data >>>>>>>>>>>>>>>>>>>>>>>>>>...
+
+select a.caf_number,a.msisdn,b.txn_id,to_char(b.created_date,'DD/MM/YYYY') from txn_master a,document_details b 
+where  a.is_tatatele='1' and (a.interaction_id=b.txn_id) and b.image_type='user_image' and trunc(a.created_date)>=trunc(sysdate-24);
+
+
+
+
+>>>>>>>>>>>>>>>PDF_pending>>>>>>>>>>>>>>>>>>>>>>>>
+
+Hi,
+
+You can use this API for repush pending cases
+
+API = http://10.5.251.103:10055/v1/digital/pdf
+Payload = 
+{
+                "sourceApp" : "simswap",
+                "cafNumber" : "F226551784"
+}
+
+Headers =
+Content-Type = application/json
+
+-- 
+Regards,
+Nishant Pant
+
+PDF_Pending:--simswap ->> not in pdf_transaction_details.
+
+
+
+curl -X POST -H "Content-Type: application/json"  -d '{"sourceApp":"THOR","cafNumber" : "D442293185"}' http://10.5.251.103:10055/v1/digital/pdf
+
+curl -X POST -H "Content-Type: application/json"  -d '{"sourceApp":"simswap","cafNumber" : "F227819417"}' http://10.5.118.16:10055/v1/digital/pdf
+
+
+
+select * from pdf_transaction_detail where CAF_NUMBER='D442293185';
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>..
+
+
+total submision date 
+
+select count(1),status from txn_master where  created_date between '04-JULY-19 03.00.00.000000000 PM' and '04-JULY-19 05.00.00.000000000 PM' and connection_type !='sim_swap' and product_type='Prepaid' and is_tatatele is null group by status; 
+
+
+
+PDF_SUBMITTED:-
+
+curl -X POST http://10.5.245.177:7004/ecaf-postpaid/ecafPostpaid/pdf/pdfRepush/v1  -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"cafNumber":"D442294981"}'
+
+
+>>>>>>>>>>>>>>>>>>..
+
+P2P journey :- This journey blocked sometime.
+
+Partent number is  activate on SIEBEL.
+
+
+>>>>>>>>>>>>>>>>>>>>.
+
+
+for i in `ll | grep 'deleted' | awk '{print $9}'`;do >$i;done
+
+
+for i in `ll | grep deleted | awk '{print $9}'`; do > $i; done
+
+>>>>>>>>>>.
+
+password 10.5.203.61
+
+xBHp796cc
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+Fault":{  
+      "faultcode":"env:Server",
+      "faultstring":"Unknown/Uncaught error has occurred.",
+      "detail":{  
+         "validateandAllocateSIMFault":{  
+            "soaFault":{  
+               "soaFaultOriginator":"DSA",
+               "soaFaultCode":"ValidateandAllocateSIM-3999-E",
+               "faultDescription":"Unknown/Uncaught error has occurred.",
+               "faultTrace":"OSB Service Callout action received an error response",
+               "soaTransactionID":"58840f62-f45c-484c-9f2e-b043cb43e4b7"
+            }
+         }
+      }
+   }
+}
+
+>>>>>>>>>>>>>>>>>>>>>..
+
+INVALID Response from server becuase zone name is not in store master validate basis of crm_zone_master via location_id configured at circel_master
+
+
+select * from circle_master where circle='112';
+
+select *
+from store_master where sales_code in ('-12961');,'9608','8682','8545','-19668','9603');
+
+
+update store_master set zone='Thane_and_Raighad' where sales_code in ('-12961');
+
+select * from crm_zone_master where location_id='1110';
+
+select * from crm_zone_master where zone_name like '%Thane%';
+
+select * from circle_master;
+
+
+
+weblogic disk optimization:-
+
+cd /proc/101747/fd
+
+for i in `ll | grep deleted | awk '{print $9}'`; do > $i; done
+check
+   du -shc *
+   ps -ef |grep java
+   cd /proc/10857/fd
+   for i in `ll | grep deleted | awk '{print $9}'`; do > $i; done
+   df -h
+   ps -ef |grep java
+   cd /proc/106781/fd
+   for i in `ll | grep deleted | awk '{print $9}'`; do > $i; done
+
+
+
+
+
+Select connection_type,count(1)
+From txn_master where status='pdf_pending'
+And created_date>=trunc(sysdate)
+group by connection_type;
+
+
+
+>>>>>>>>>>prepaid  case retail 
+
+
+-=================== prepaid PDF pending when PDF genration done==========================
+
+
+curl -v http://10.5.244.102:7004/orion-prepaid/test/pdf?caf=I091948710
+
+
+
+curl -v http://10.5.244.102:7004/orion-prepaid/test/pdf?caf=I091948710
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..
+
+Please get touch with Siebel Team they will push de details to optimus .
+
+om.airtel.simswap.exceptions.SimswapException: We are unable to initiate the request for SIM change as this number is currently barred / not active. Please refer iCRM to check the current status
+
+
+
+
+repush all:-->>
+
+for i in `cat caf.txt`;do curl -X POST -H "Content-Type: application/json"  -d '{"sourceApp":"orion","cafNumber" : "'$i'"}' http://10.5.118.16:10055/v1/digital/pdf;done
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>
+
+select * from  FTA_POS_HIERARCHY where retailer_mobile_no in ('9849567249','7702562067','9949333187');
+
+
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
+
+
+EV_pending:-
+
+task_data :-TASK_STATE
+ACCEPTED
+
+
+select * from existing_customer_profile where txn_id='400121472'; :-->>SCHEDULED_STATUS
+schedule_done
+
+
+
+select * from pdf_transaction_detail where caf_number='P137979006';:----blank
+
+
+
+pdf_pending :- hit below curl
+
+	
+
+
+
+in case CO_IP not workign then add details in CRM_POS_MASTER & sfo code is not in 
+
+
+CRM_POS_MASTER 
+
+
+curl -X POST http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/submitorder/repush/v2 -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"cafNumbers":["D273178022"],"posCodeCases" : "false"}'
+
+
+
+
+New4Pas
+
+
+
+>>>>>>>>>>>>>>>>.
+
+PREPAID
+
+CAF_submitted :--<<
+
+
+
+[eca_user@N2VL-TA-ECAF01 ~]$ curl -v http://10.5.244.102:7004/orion-prepaid/nonaadhaar/ev/repush?caf=F163787911
+* About to connect() to 10.5.244.102 port 7004 (#0)
+*   Trying 10.5.244.102...
+* Connected to 10.5.244.102 (10.5.244.102) port 7004 (#0)
+> GET /orion-prepaid/nonaadhaar/ev/repush?caf=F163787911 HTTP/1.1
+> User-Agent: curl/7.29.0
+> Host: 10.5.244.102:7004
+> Accept: */*
+>
+< HTTP/1.1 200 OK
+< Date: Mon, 30 Sep 2019 03:29:26 GMT
+< Transfer-Encoding: chunked
+< Content-Type: application/json;charset=UTF-8
+<
+* Connection #0 to host 10.5.244.102 left intact
+true[eca_user@N2VL-TA-ECAF01 ~]$
+[eca_user@N2VL-TA-ECAF01 ~]$
+[eca_user@N2VL-TA-ECAF01 ~]$ timed out waiting for input: auto-logout
+Connection to 10.5.214.143 closed.
+
+
+
+ECAF_butterfly:-ev repush
+
+
+https://ecaf.airtel.com:9443/ecaf-postpaid/ecafPostpaid/ev/evRepush/v1
+
+{"cafNumber":"D324275955"}
+
+
+
+
+select * from application_property where key like '%solace%';
+
+
+
+
+CAF submitted butterfly:-
+
+ curl -X POST https://ecaf.airtel.com:9443/ecaf-postpaid/ecafPostpaid/ev/evRepush/v1 -H 'Content-Type: application/json' -H 'cache-control: no-cache' -d '{"cafNumber":"D252021827"}'
+
+
+
+
+Could you please help and check whether the cases where ‘View ID is mandatory” are all ev-repush cases i.e. there is_REPUSHED_FLAG in db is 1.
+Note: I could not access prod db even on vdi.
+
+
+
+If images are older created (2018)
+
+
+/application/aadhar_user/CroppedImages/simple/output
+
+Pdf_sucess stuck cases
+
+
+curl -X POST http://10.5.214.35:7004/simswap-app/simswap/repush/provision/simswap -H 'Content-Type: application/json' -d '{"cafNumbers":["E245660835"]}'
+
+sending for ev:-
+
+
+curl http://10.5.245.179:7005/simswap-app/simswap/repush/push/toEv  curl http://10.5.245.179:7005/simswap-app/simswap/repush/push/
+
+sending for ev:-
+
+curl -X POST http://10.5.31.47:7005/simswap-app/simswap/repush/push/toEv -H 'Content-Type: application/json' -d '{"cafNumbers":["E433579923"]}'
+
+
+="insert into store_master values ('"&A2&"','"&B2&"','"&C2&"','"&D2&"','"&E2&"','"&F2&"','"&G2&"','"&H2&"','"&I2&"','"&J2&"','"&K2&"','"&L2&"','"&M2&"','"&N2&"','"&O2&"','"&1&"','"&1&"','"&"','"&"','"&"','"&"');"
+
+pm2 start ecosystem.json
+
+
+
+redis-cli -h 127.0.0.1 lrange orion_dedeup_log 0 -1 > /tmp/log
+
+
+
+New postapid repush:PDF Genrated
+
+curl -X POST -H "Content-Type: application/json"  -d '{"cafNumbers":["D325674999"],
+"posCodeCases" : "true"}' http://10.5.245.178:7004/ecaf-postpaid/ecafPostpaid/submitorder/repush/v2/a1
+
+
+
+Authorisation letter:-
+
+npit_txn_id :- submit_order_Details 
+
+/application/RSA_PROD_PATH/npit_corporate_letter
+
+
+/application/eCaf/logs/solacelog
+
+
+
+butterfly:-
+
+
+select * from application_property where key like '%corporate%';
+
+npit.corporate.letter.upload.username	sftp_user
+npit.corporate.letter.upload.password	Butt3rfly@157
+npit.corporate.letter.upload.remotehost	10.5.28.64
+npit.corporate.letter.upload.keypath	/RSA_PROD_PATH/.ssh/authorized_keys
+npit.corporate.letter.upload.remote.directory	/pdf/portinNocDocs
+
+
+
+
+
+
+Nexus
+
+http://10.5.204.222:8081
+
+encasa
+encasa
+
+Query:-
+select  count(*) from txn_master where status='dedupe_add_success' and created_date>=trunc(sysdate);
+
+
+
+
+
+
+
+
+
+
+addditional :-
+
+sprinkler:- 
+10.5.221.103:->443  
+     
+	 10.5.221.36:443- i rule :-/gateway
+	 10.5.204.250:8000
+	 10.5.204.252:8000
+
+To do :- pdf_ogs move to backup server
+
+10.5.118.16
+10.5.118.17
+
+a1803yx2
+Singh@#2019
+
+
+
+
+http://10.5.78.145:8080/
+admin
+admin
+a_ravindra.bhakuni@airtel.com
+
+
+
+ilom.cer
+
+intermediate.cer(s)
+
+root.trusted_CA.cer
+
+Example: Create Certificate Chain
+
+
+
+Certificate end date 
+
+openssl x509 -enddate -noout -in aw.crt 
+notAfter=Feb 17 23:59:59 2025 GMT
+
+
