@@ -533,4 +533,12 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA %
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
 
->>>>>> 
+>>>>>> GIT REMOTE >>>>>>>>>>
+
+git remote add origin git@github.com:rv4000/prod.git -->(origin kind of alias of remote URL)
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git remote -v
+origin	git@github.com:rv4000/prod.git (fetch)
+origin	git@github.com:rv4000/prod.git (push)
+
+ 
