@@ -543,4 +543,80 @@ origin	git@github.com:rv4000/prod.git (push)
 
 >>>>>>>>>> GIT STATUS MAKE ALIAS >>>>>>>>>>
 
-git config --global alias.st status 
+git config --global alias.st status
+
+
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch develop
+nothing to commit, working tree clean
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ll
+zsh: command not found: ll
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ls -ltrh
+total 224
+-rw-r--r--  1 b0268336-01  staff    40B Feb  9 10:10 index.html
+-rw-r--r--  1 b0268336-01  staff    13B Feb 11 19:54 error.log
+-rw-r--r--  1 b0268336-01  staff     0B Feb 11 19:56 error4.log
+-rw-r--r--  1 b0268336-01  staff    19B Feb 11 19:57 error1.log
+-rw-r--r--  1 b0268336-01  staff    22B Feb 11 19:57 error2.log
+-rw-r--r--  1 b0268336-01  staff    24B Feb 11 19:58 error3.log
+drwxr-xr-x  3 b0268336-01  staff    96B Feb 11 20:02 dir
+-rw-r--r--  1 b0268336-01  staff    49B Feb 11 20:33 data1.txt
+-rw-r--r--  1 b0268336-01  staff    33B Feb 12 10:01 readme
+-rw-r--r--@ 1 b0268336-01  staff    57K Feb 12 10:14 ecaf.txt
+-rw-r--r--  1 b0268336-01  staff     0B Feb 14 09:31 b
+drwxr-xr-x  3 b0268336-01  staff    96B Feb 14 09:31 DATA
+-rw-r--r--  1 b0268336-01  staff    22K Feb 14 09:31 gita.txt
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % rm -rf b
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git add -A .
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -m "Inital Commit on branch"
+[develop 3704b27] Inital Commit on branch
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ delete mode 100644 b
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status                             
+On branch develop
+nothing to commit, working tree clean
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ls -ltrh
+total 224
+-rw-r--r--  1 b0268336-01  staff    40B Feb  9 10:10 index.html
+-rw-r--r--  1 b0268336-01  staff    13B Feb 11 19:54 error.log
+-rw-r--r--  1 b0268336-01  staff     0B Feb 11 19:56 error4.log
+-rw-r--r--  1 b0268336-01  staff    19B Feb 11 19:57 error1.log
+-rw-r--r--  1 b0268336-01  staff    22B Feb 11 19:57 error2.log
+-rw-r--r--  1 b0268336-01  staff    24B Feb 11 19:58 error3.log
+drwxr-xr-x  3 b0268336-01  staff    96B Feb 11 20:02 dir
+-rw-r--r--  1 b0268336-01  staff    49B Feb 11 20:33 data1.txt
+-rw-r--r--  1 b0268336-01  staff    33B Feb 12 10:01 readme
+-rw-r--r--@ 1 b0268336-01  staff    57K Feb 12 10:14 ecaf.txt
+drwxr-xr-x  3 b0268336-01  staff    96B Feb 14 09:31 DATA
+-rw-r--r--  1 b0268336-01  staff    22K Feb 14 09:31 gita.txt
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git checkout master                    
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % ls -ltrh
+total 224
+-rw-r--r--  1 b0268336-01  staff    40B Feb  9 10:10 index.html
+-rw-r--r--  1 b0268336-01  staff    13B Feb 11 19:54 error.log
+-rw-r--r--  1 b0268336-01  staff     0B Feb 11 19:56 error4.log
+-rw-r--r--  1 b0268336-01  staff    19B Feb 11 19:57 error1.log
+-rw-r--r--  1 b0268336-01  staff    22B Feb 11 19:57 error2.log
+-rw-r--r--  1 b0268336-01  staff    24B Feb 11 19:58 error3.log
+drwxr-xr-x  3 b0268336-01  staff    96B Feb 11 20:02 dir
+-rw-r--r--  1 b0268336-01  staff    49B Feb 11 20:33 data1.txt
+-rw-r--r--  1 b0268336-01  staff    33B Feb 12 10:01 readme
+-rw-r--r--@ 1 b0268336-01  staff    57K Feb 12 10:14 ecaf.txt
+-rw-r--r--  1 b0268336-01  staff     0B Feb 14 09:32 b
+-rw-r--r--  1 b0268336-01  staff    21K Feb 14 09:32 gita.txt
+
+
+
+>>>>>>>>>>>>>>> 
