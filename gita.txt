@@ -628,5 +628,18 @@ drwxr-xr-x  3 b0268336-01  staff    96B Feb 11 20:02 dir
 
 Conflict resolution marker
 
-<<<
- 
+git branch
+
+git branch -v (last commit history)
+  develop 3704b27 Inital Commit on branch
+* master  fb94f33 [ahead 2] direct commit
+
+
+git branch --merged (merged branches)
+git branch --no-merged  (not branches merged)
+
+DELETING BRANCHES:- 
+
+git branch -d develop (give warning if develop not merged)
+
+gir branch -D develop (give warning if develop not merged)
