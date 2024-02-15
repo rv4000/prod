@@ -640,6 +640,6 @@ git branch --no-merged  (not branches merged)
 
 DELETING BRANCHES:- 
 
-git branch -d develop (give warning if develop not merged)
+git branch -d develop (give warning if develop not merged,would delete merged branches)
 
-gir branch -D develop (give warning if develop not merged)
+git branch -D develop (give warning if develop not merged)
