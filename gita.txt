@@ -619,4 +619,14 @@ drwxr-xr-x  3 b0268336-01  staff    96B Feb 11 20:02 dir
 
 
 
->>>>>>>>>>>>>>> 
+>>>>>>>>>>>>>>> git commit -a -m "directly commit without go stagging area" 
+
+
+
+>>>>>>>GIT RESSOLVE MERGE CONFLICT/BRANCH MANAGEMENT STRATGIES >>>>>>>>>
+
+
+Conflict resolution marker
+
+<<<
+ 
