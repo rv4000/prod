@@ -643,3 +643,77 @@ DELETING BRANCHES:-
 git branch -d develop (give warning if develop not merged,would delete merged branches)
 
 git branch -D develop (give warning if develop not merged)
+
+
+
+CONFLICT EXAMPLE :-
+
+
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git merge feature
+Auto-merging index.html
+CONFLICT (content): Merge conflict in index.html
+Automatic merge failed; fix conflicts and then commit the result.
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git commit -v
+U	index.html
+error: Committing is not possible because you have unmerged files.
+hint: Fix them up in the work tree, and then use 'git add/rm <file>'
+hint: as appropriate to mark resolution and make a commit.
+fatal: Exiting because of an unresolved conflict.
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git status
+On branch master
+Your branch is ahead of 'origin/master' by 7 commits.
+  (use "git push" to publish your local commits)
+
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % vim index.html 
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % cat index.html 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
+    <title>This is my inital tittle c8</title>
+=======
+    <title>This is my inital tittle c5</title>
+>>>>>>> feature
+</head>
+<body>
+    
+</body>
+</html>
+b0268336-0
+
+
+
