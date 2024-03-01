@@ -716,4 +716,46 @@ b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % cat index.html
 b0268336-0
 
 
+>>>>>
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git branch --merged   
+  feature
+* master
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git branch --no-merged
+  develop
+
+
+
+>>>>>>
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git branch -d feature
+Deleted branch feature (was bb8a712).
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git branch -d develop
+error: The branch 'develop' is not fully merged.
+If you are sure you want to delete it, run 'git branch -D develop'.
+
+
+>>>> BRANCHIN WORKFLOW
+
+Long Running Branch
+master
+develop
+Short Live Branch Topic Branch
+feature 
+
+
+>>> 
+git remote -v
+
+b0268336-01@B0268336-01s-MacBook-Pro IMP_DATA % git remote -v
+origin	git@github.com:rv4000/prod.git (fetch)
+origin	git@github.com:rv4000/prod.git (push)
+
+
+
+in case blank file comes then below command to be used.
+
+git remote add origin https://github.com:rv4000/prod.git
+
+ 
 
