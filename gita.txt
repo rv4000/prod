@@ -758,4 +758,16 @@ in case blank file comes then below command to be used.
 git remote add origin https://github.com:rv4000/prod.git
 
  
+>>>>>>>>>> git push branch
+gt checkout bugfix
 
+git push origin bugfix
+
+>>>>> if you want diffrent branch name >>
+
+git push origin bugfix:mybugfix
+
+
+>>>>>deldte bugfix
+
+git push origin -d bugfix mybugfix
